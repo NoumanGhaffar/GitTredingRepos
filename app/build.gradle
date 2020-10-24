@@ -28,6 +28,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+
     //Kotlin
     implementation(Dependencies.kotlin)
     implementation(Dependencies.ktx)
@@ -41,6 +42,12 @@ dependencies {
     implementation(Dependencies.daggerAndroid)
     implementation(Dependencies.daggerAndroidSupport)
     kapt(Dependencies.daggerAndroidProcessor)
+
+    // network
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.retrofitConverter)
+    implementation(Dependencies.conscrypt)
+    debugImplementation(Dependencies.loggingInterceptor)
 
     //Testing
     testImplementation (Dependencies.junit)
