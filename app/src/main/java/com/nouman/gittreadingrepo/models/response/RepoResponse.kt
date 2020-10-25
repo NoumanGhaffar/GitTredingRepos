@@ -18,9 +18,13 @@ data class RepoResponse(
     var language: String?,
     @SerializedName("forks")
     var forks: Int,
+    @SerializedName("stargazers_count")
+    var starsCount: Int,
+    @SerializedName("html_url")
+    var url: String?,
     @SerializedName("owner")
     var owner: RepoOwnerResponse?
 ): BaseResponse<Repo>() {
     override fun toModel() =
-        Repo(repoId = id, nodeId, fullName, description, language, forks, owner?.toModel())
+        Repo(repoId = id, nodeId, fullName, description, language, forks, starsCount, url, owner?.toModel())
 }

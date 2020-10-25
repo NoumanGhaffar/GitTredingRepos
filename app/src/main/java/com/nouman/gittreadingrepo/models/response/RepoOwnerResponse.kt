@@ -9,7 +9,7 @@ data class RepoOwnerResponse(
     val name: String,
     @SerializedName("id")
     val id: Int,
-    @SerializedName("url")
+    @SerializedName("avatar_url")
     val url: String,
 ) : BaseResponse<RepoOwner>() {
     override fun toModel() = RepoOwner(name, id, url)
