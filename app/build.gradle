@@ -51,6 +51,15 @@ dependencies {
 
     //Testing
     testImplementation (Dependencies.junit)
+    testImplementation(Dependencies.truth)
+    testImplementation(Dependencies.testCore)
+    testImplementation(Dependencies.mockk)
+    testImplementation(Dependencies.orgThreetenbp)
+    testImplementation(Dependencies.coroutineTest)
+
+    // coroutine
+    implementation(Dependencies.coroutineCore)
+    implementation(Dependencies.coroutineAndroid)
 
     //life cycle
     implementation(Dependencies.viewmodelKtx)

@@ -11,6 +11,7 @@ object Dependencies {
         const val retrofit = "2.6.1"
         const val okhttp = "4.6.0"
         const val conscrypt = "2.2.1"
+        const val coroutine = "1.3.1"
 
     }
 
@@ -37,6 +38,17 @@ object Dependencies {
 
     // test
     const val junit = "junit:junit:${Version.junit}"
+    val mockk = "io.mockk:mockk:1.9.3"
+    val testCore = "android.arch.core:core-testing:1.1.0"
+    val orgThreetenbp = "org.threeten:threetenbp:1.3.3"
+    val truth = "com.google.truth:truth:1.0"
+    val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine}"
+
+    // coroutine
+    val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutine}"
+    val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutine}"
+
+
 
     // lifecycle
     const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"

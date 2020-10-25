@@ -11,14 +11,16 @@ data class RepoResponse(
     @SerializedName("node_id")
     var nodeId: String,
     @SerializedName("full_name")
-    var fullName: String,
+    var fullName: String?,
     @SerializedName("description")
-    var description: String,
+    var description: String?,
     @SerializedName("language")
-    var language: String,
+    var language: String?,
     @SerializedName("forks")
-    var forks: Int
+    var forks: Int,
+    @SerializedName("owner")
+    var owner: RepoOwnerResponse?
 ): BaseResponse<Repo>() {
     override fun toModel() =
-        Repo(repoId = id, nodeId, fullName, description, language, forks)
+        Repo(repoId = id, nodeId, fullName, description, language, forks, owner?.toModel())
 }
