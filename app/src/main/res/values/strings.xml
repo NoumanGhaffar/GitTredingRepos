@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GitTreadingRepo</string>
+    <string name="something_went_wrong">Something went wrong..</string>
+    <string name="default_error_message">An alien is probably block your signal.</string>
+    <string name="retry">RETRY</string>
+    <string name="trending">Trending</string>
 </resources>

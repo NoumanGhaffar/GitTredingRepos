@@ -1,9 +1,13 @@
 package com.nouman.gittreadingrepo.ui
 
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nouman.gittreadingrepo.R
+import com.nouman.gittreadingrepo.databinding.ActivityMainBinding
+import com.nouman.gittreadingrepo.models.Repo
 import com.nouman.gittreadingrepo.viewmodel.MainViewModel
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
@@ -14,28 +18,63 @@ class MainActivity : DaggerAppCompatActivity() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var mainViewModel: MainViewModel
-
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initData()
-        mainViewModel.getTrendingRepos().observe(this, {
-            if (it != null) {
-                Toast.makeText(
-                    baseContext, "GOt the list size = " + it.repoList.size, Toast.LENGTH_LONG
-                ).show()
-            }else{
-                Toast.makeText(
-                    baseContext, "No List due = ", Toast.LENGTH_LONG
-                ).show()
-            }
-        })
+        initUiAndData()
+        startShimmer()
+        initTreadingRepoObserver()
+        getTreadingReposFromServer()
+    }
+
+    private fun getTreadingReposFromServer() {
         mainViewModel.getTrendingReposFromServer()
     }
 
-    private fun initData() {
-        mainViewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+    private fun initTreadingRepoObserver() {
+        mainViewModel.getTrendingRepos().observe(this, {
+            if (it != null && it.repoList.isNotEmpty()) {
+                updateRecyclerView(it.repoList)
+                stopShimmer()
+            } else {
+                stopShimmer()
+                showErrorRetryView()
+            }
+        })
+    }
 
+    private fun showErrorRetryView() {
+        binding.groupErrorRetry.visibility = View.VISIBLE
+        binding.animationView.playAnimation()
+    }
+
+    private fun hideErrorRetryView() {
+        binding.groupErrorRetry.visibility = View.GONE
+    }
+
+    private fun updateRecyclerView(repoList: List<Repo>) {
+        binding.rvRepos.layoutManager = LinearLayoutManager(applicationContext)
+        binding.rvRepos.adapter = RepoAdapter(repoList)
+    }
+
+    private fun initUiAndData() {
+        mainViewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.btnRetry.setOnClickListener {
+            hideErrorRetryView()
+            startShimmer()
+            getTreadingReposFromServer()
+        }
+    }
+
+    private fun startShimmer() {
+        binding.shimmerLayout.startShimmer()
+        binding.shimmerLayout.visibility = View.VISIBLE
+    }
+
+    private fun stopShimmer() {
+        binding.shimmerLayout.stopShimmer()
+        binding.shimmerLayout.visibility = View.GONE
     }
 }

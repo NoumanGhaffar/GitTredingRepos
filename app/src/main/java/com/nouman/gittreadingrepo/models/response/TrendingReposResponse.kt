@@ -11,22 +11,19 @@ data class TrendingReposResponse(
     @SerializedName("items")
     var repoList: List<RepoResponse>?
 ) : BaseResponse<TrendingRepos>() {
+
     override fun toModel() =
         TrendingRepos(totalCount, convertToRepoList(repoList))
 
-    private fun convertToRepoList(repoResponseList: List<RepoResponse>?) : List<Repo> {
+    private fun convertToRepoList(repoResponseList: List<RepoResponse>?): List<Repo> {
         val repoList = mutableListOf<Repo>()
         repoResponseList?.let {
             it.forEach {
-                try {
-                    repoList.add(it.toModel())
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
+                repoList.add(it.toModel())
             }
         }
 
-        return  repoList
+        return repoList
     }
 }
 

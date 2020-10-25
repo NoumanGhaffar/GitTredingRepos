@@ -24,6 +24,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -35,9 +38,15 @@ dependencies {
 
     //UI
     implementation (Dependencies.constraintLayout)
+    implementation(Dependencies.sdp)
+    implementation(Dependencies.glide)
+    annotationProcessor(Dependencies.glideAnnotation)
+    implementation(Dependencies.shimmer)
+    implementation(Dependencies.lottieAnimation)
 
     // dependency injection
     implementation(Dependencies.dagger)
+    implementation (Dependencies.recyclerView)
     kapt(Dependencies.daggerCompiler)
     implementation(Dependencies.daggerAndroid)
     implementation(Dependencies.daggerAndroidSupport)

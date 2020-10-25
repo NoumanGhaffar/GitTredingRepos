@@ -1,6 +1,7 @@
 object Dependencies {
     object Version {
 
+        const val recyclerView= "1.1.0"
         const val kotlin = "1.4.10"
         const val ktx = "1.3.2"
         const val constraintLayout = "2.0.1"
@@ -12,15 +13,25 @@ object Dependencies {
         const val okhttp = "4.6.0"
         const val conscrypt = "2.2.1"
         const val coroutine = "1.3.1"
-
+        const val sdp = "1.0.6"
+        const val glide = "4.8.0"
+        const val lottieVersion = "3.4.0"
     }
 
     // kotlin
     const val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Version.kotlin}"
     const val ktx = "androidx.core:core-ktx:${Version.ktx}"
 
-    // androidx
+    // UI
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Version.constraintLayout}"
+    const val sdp = "com.intuit.sdp:sdp-android:${Version.sdp}"
+    const val glide = "com.github.bumptech.glide:glide:${Version.glide}"
+    const val glideAnnotation = "com.github.bumptech.glide:compiler:${Version.glide}"
+    const val recyclerView ="androidx.recyclerview:recyclerview:${Version.recyclerView}"
+    const val shimmer ="com.facebook.shimmer:shimmer:0.5.0"
+    const val lottieAnimation = "com.airbnb.android:lottie:${Version.lottieVersion}"
+
+
 
     // dependency injection
     const val dagger = "com.google.dagger:dagger:${Version.dagger}"
@@ -38,17 +49,15 @@ object Dependencies {
 
     // test
     const val junit = "junit:junit:${Version.junit}"
-    val mockk = "io.mockk:mockk:1.9.3"
-    val testCore = "android.arch.core:core-testing:1.1.0"
-    val orgThreetenbp = "org.threeten:threetenbp:1.3.3"
-    val truth = "com.google.truth:truth:1.0"
-    val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine}"
+    const val mockk = "io.mockk:mockk:1.9.3"
+    const val testCore = "android.arch.core:core-testing:1.1.0"
+    const val orgThreetenbp = "org.threeten:threetenbp:1.3.3"
+    const val truth = "com.google.truth:truth:1.0"
+    const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine}"
 
     // coroutine
-    val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutine}"
-    val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutine}"
-
-
+    const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutine}"
+    const val coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutine}"
 
     // lifecycle
     const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycle}"
