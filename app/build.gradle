@@ -65,6 +65,8 @@ dependencies {
     testImplementation(Dependencies.mockk)
     testImplementation(Dependencies.orgThreetenbp)
     testImplementation(Dependencies.coroutineTest)
+    androidTestImplementation(Dependencies.espressoTest)
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 
     // coroutine
     implementation(Dependencies.coroutineCore)

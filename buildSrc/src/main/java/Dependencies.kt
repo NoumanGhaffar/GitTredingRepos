@@ -16,6 +16,8 @@ object Dependencies {
         const val sdp = "1.0.6"
         const val glide = "4.8.0"
         const val lottieVersion = "3.4.0"
+        const val espresso ="3.1.0"
+
     }
 
     // kotlin
@@ -54,6 +56,7 @@ object Dependencies {
     const val orgThreetenbp = "org.threeten:threetenbp:1.3.3"
     const val truth = "com.google.truth:truth:1.0"
     const val coroutineTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.coroutine}"
+    const val espressoTest = "androidx.test.espresso:espresso-core:${Version.espresso}"
 
     // coroutine
     const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.coroutine}"
