@@ -1,9 +1,8 @@
 package com.nouman.gittreadingrepo.models
 
-import android.widget.ImageView
+
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.nouman.gittreadingrepo.utils.RoundCornersImageView
 import com.nouman.gittreadingrepo.utils.RoundedCornerImageView
 
 data class Repo(
