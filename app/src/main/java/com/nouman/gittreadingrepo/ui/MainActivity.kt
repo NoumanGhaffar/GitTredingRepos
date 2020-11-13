@@ -3,6 +3,7 @@ package com.nouman.gittreadingrepo.ui
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nouman.gittreadingrepo.R
@@ -33,7 +34,8 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
     private fun initTreadingRepoObserver() {
-        mainViewModel.getTrendingRepos().observe(this, {
+        mainViewModel.getTrendingRepos().observe(this, Observer {
+
             if (it != null && it.repoList.isNotEmpty()) {
                 updateRecyclerView(it.repoList)
                 stopShimmer()
@@ -41,6 +43,7 @@ class MainActivity : DaggerAppCompatActivity() {
                 stopShimmer()
                 showErrorRetryView()
             }
+
         })
     }
 
@@ -59,7 +62,7 @@ class MainActivity : DaggerAppCompatActivity() {
     }
 
     private fun initUiAndData() {
-        mainViewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.btnRetry.setOnClickListener {
             hideErrorRetryView()
@@ -77,4 +80,7 @@ class MainActivity : DaggerAppCompatActivity() {
         binding.shimmerLayout.stopShimmer()
         binding.shimmerLayout.visibility = View.GONE
     }
+//    supportFragmentManager.beginTransaction()
+//    .replace(R.id.container, MainFragment.newInstance())
+//    .commitNow()
 }
